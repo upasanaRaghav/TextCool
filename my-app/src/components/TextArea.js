@@ -2,13 +2,11 @@ import React, { useState } from "react";
 
 export default function TextArea(props) {
   const handleUpperChange = () => {
-    // console.log("upper case was clicked")
     let newText = text.toUpperCase();
     settext(newText);
   };
 
   const handleLowerChange = () => {
-    // console.log("upper case was clicked")
     let newText = text.toLowerCase();
     settext(newText);
   };
@@ -50,7 +48,7 @@ settext(newText.join(" "));
 
   return (
     <>
-    <div className="container">
+    <div className="container" style={{color: props.mode==='dark'?'white':'#191935'}}>
       <h1>{props.heading}</h1>
 
       <div className="mb-3">
@@ -59,6 +57,7 @@ settext(newText.join(" "));
           value={text}
           onChange={handleOnchange}
           id="myForm"
+          style={{backgroundColor:props.mode==='dark'?'#191935':'white', color: props.mode==='dark'?'white':'#191935'}}
           rows="10"
         ></textarea>
       </div>
@@ -82,12 +81,12 @@ settext(newText.join(" "));
         </button>
       </div>
 
-   <div className="container my-3">
+   <div className="container my-3" style={{color: props.mode==='dark'?'white':'#191935'}}>
    <h2>Text Summary</h2>
   <p>{text.split("").length} Words And {text.length} Letters</p>
   <p>{0.008*text.split("").length} Minute read</p>
     <h2>Preview</h2>
-    <p>{text}</p>
+    <p>{text.length>0?text:"Enter something in the textbox above to preview it here"}</p>
    </div>
 
     </>
